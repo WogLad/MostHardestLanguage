@@ -1,5 +1,4 @@
 test_code = open("testcode.mhl", "r")
-# test_code = open("../DiscordBot with Python/discordbot.py", "r")
 
 script_variables = {}
 
