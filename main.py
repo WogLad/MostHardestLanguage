@@ -1,11 +1,11 @@
 test_code = open("testcode.mhl", "r")
+# test_code = open("../DiscordBot with Python/discordbot.py", "r")
 
 script_variables = {}
 
 def print_function(to_print, is_raw_string):
 	if is_raw_string == True:
 		print(to_print[0])
-	# print(to_print)
 
 def create_variable_function(name, value, var_dict):
 	global script_variables
@@ -36,12 +36,26 @@ def parser():
 				print(script_variables[new_word])
 			else:
 				LogErrors([f"There is no variable with the name '{new_word}'.", f"Try creating a variable with the name {new_word} and use that instead."], (lines.index(word)+1))
+				return
 		elif word.startswith("var "):
-			word = word.replace("var ", "")
-			if " = " in word:
-				new_var = word.split(" = ")
+			new_word = word.replace("var ", "")
+			if " = " in new_word:
+				new_var = new_word.split(" = ")
 				if list(new_var[0])[0].isdigit():
-					print("Variable names cannot start with a number.")
+					LogErrors(["Variable names cannot start with a number."], (lines.index(word)+1))
+					return
+				elif "+" in new_var[0]:
+					LogErrors(["Variable names cannot have a '+' sign in them."], (lines.index(word)+1))
+					return
+				elif "-" in new_var[0]:
+					LogErrors(["Variable names cannot have a '-' sign in them."], (lines.index(word)+1))
+					return
+				elif "*" in new_var[0]:
+					LogErrors(["Variable names cannot have a '*' sign in them."], (lines.index(word)+1))
+					return
+				elif "/" in new_var[0]:
+					LogErrors(["Variable names cannot have a '/' sign in them."], (lines.index(word)+1))
+					return
 				else:
 					create_variable_function(new_var[0], new_var[1], script_variables)
 			else:

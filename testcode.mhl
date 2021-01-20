@@ -1,5 +1,7 @@
 var message = "Hello this is a test message to see if i can run this string properly in the print command!"
 print(message)
-var a = 1
-var b = 2
-print(bob)
+
+var aa = 1
+var b+ = 2
+
+print(b)
