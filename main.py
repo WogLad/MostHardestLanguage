@@ -32,7 +32,40 @@ def parser():
 		if word.startswith("print(") and word.endswith(")"):
 			new_word = word.replace("print(", "")
 			new_word = new_word.replace(")", "")
-			if new_word in script_variables:
+			if " + " in new_word:
+				sum = 0
+				to_add = new_word.split(" + ")
+				for num in to_add:
+					sum = sum + script_variables[num]
+				print(sum)
+			elif " - " in new_word:
+				sum = 0
+				to_add = new_word.split(" - ")
+				for num in to_add:
+					if to_add.index(num) == 0:
+						sum = script_variables[num]
+					else:
+						sum = sum - script_variables[num]
+				print(sum)
+			elif " * " in new_word:
+				sum = 0
+				to_add = new_word.split(" * ")
+				for num in to_add:
+					if to_add.index(num) == 0:
+						sum = script_variables[num]
+					else:
+						sum = sum * script_variables[num]
+				print(sum)
+			elif " / " in new_word:
+				sum = 0
+				to_add = new_word.split(" / ")
+				for num in to_add:
+					if to_add.index(num) == 0:
+						sum = script_variables[num]
+					else:
+						sum = sum / script_variables[num]
+				print(sum)
+			elif new_word in script_variables:
 				print(script_variables[new_word])
 			else:
 				LogErrors([f"There is no variable with the name '{new_word}'.", f"Try creating a variable with the name {new_word} and use that instead."], (lines.index(word)+1))
