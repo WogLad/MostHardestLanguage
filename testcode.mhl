@@ -11,5 +11,4 @@ var bool = false
 
 //print(message + a)
 
-print_string("hi my name is Aaron")
 print_string("hi")
