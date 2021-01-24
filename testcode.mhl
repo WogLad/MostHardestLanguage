@@ -1,8 +1,15 @@
+access library(console)
+access library(string)
+
 var message = "Hello this is a test message to see if i can run this string properly in the print command!"
 print(message)
 
 var a = 15
 var b = 2
 var c = 3
+var bool = false
 
-print(a / c / b)
+//print(message + a)
+
+print_string("hi my name is Aaron")
+print_string("hi")
